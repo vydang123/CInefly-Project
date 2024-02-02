@@ -22,6 +22,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
       description,
       dueDate,
       priority,
+      completed: false,
     };
 
     // Call the onSubmit function passed from the parent

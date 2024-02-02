@@ -14,6 +14,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
   const [editedDescription, setEditedDescription] = useState(task.description);
   const [editedDueDate, setEditedDueDate] = useState(task.dueDate);
   const [editedPriority, setEditedPriority] = useState(task.priority);
+  const [editedCompleted, setEditedCompleted] = useState(task.completed);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -26,6 +27,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
       description: editedDescription,
       dueDate: editedDueDate,
       priority: editedPriority,
+      completed: editedCompleted,
     };
 
     onEdit(task.id, updatedTask);
@@ -63,6 +65,15 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
             onChange={(e) => setEditedPriority(e.target.value)}
           />
 
+          <label>Status:</label>
+          <select
+            value={editedCompleted.toString()}
+            onChange={(e) => setEditedCompleted(e.target.value === 'true')}
+          >
+            <option value="true">Completed</option>
+            <option value="false">Pending</option>
+          </select>
+
           <button onClick={handleSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
@@ -72,6 +83,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
           <p>{task.description}</p>
           <p>Due Date: {task.dueDate}</p>
           <p>Priority: {task.priority}</p>
+          <p>Status: {task.completed ? 'Completed' : 'Pending'}</p>
           <button onClick={handleEdit}>Edit</button>
           <button onClick={() => onDelete(task.id)}>Delete</button>
         </div>

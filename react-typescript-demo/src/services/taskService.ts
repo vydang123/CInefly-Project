@@ -4,6 +4,7 @@ export type Task = {
     description: string;
     dueDate: string;
     priority: string;
+    completed: boolean;
   };
   
   const tasks: Task[] = [
@@ -13,6 +14,7 @@ export type Task = {
       description: 'Description for Task 1',
       dueDate: '2024-02-10',
       priority: 'High',
+      completed: false
     },
     {
       id: '2',
@@ -20,6 +22,7 @@ export type Task = {
       description: 'Description for Task 2',
       dueDate: '2024-02-15',
       priority: 'Medium',
+      completed: false
     },
     // Add more tasks as needed
   ];
